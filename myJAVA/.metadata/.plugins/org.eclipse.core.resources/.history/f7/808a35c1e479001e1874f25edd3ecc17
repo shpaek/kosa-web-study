@@ -1,0 +1,50 @@
+package com.my.board.entity;
+
+import static com.querydsl.core.types.PathMetadataFactory.*;
+
+import com.querydsl.core.types.dsl.*;
+
+import com.querydsl.core.types.PathMetadata;
+import javax.annotation.processing.Generated;
+import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
+
+
+/**
+ * QReply is a Querydsl query type for Reply
+ */
+@Generated("com.querydsl.codegen.DefaultEntitySerializer")
+public class QReply extends EntityPathBase<Reply> {
+
+    private static final long serialVersionUID = -1440395812L;
+
+    public static final QReply reply = new QReply("reply");
+
+    public final NumberPath<Integer> replyBoardNo = createNumber("replyBoardNo", Integer.class);
+
+    public final StringPath replyContent = createString("replyContent");
+
+    public final DatePath<java.sql.Date> replyDt = createDate("replyDt", java.sql.Date.class);
+
+    public final StringPath replyId = createString("replyId");
+
+    public final ListPath<Reply, QReply> replyList = this.<Reply, QReply>createList("replyList", Reply.class, QReply.class, PathInits.DIRECT2);
+
+    public final NumberPath<Integer> replyNo = createNumber("replyNo", Integer.class);
+
+    public final NumberPath<Integer> replyParentNo = createNumber("replyParentNo", Integer.class);
+
+    public QReply(String variable) {
+        super(Reply.class, forVariable(variable));
+    }
+
+    public QReply(Path<? extends Reply> path) {
+        super(path.getType(), path.getMetadata());
+    }
+
+    public QReply(PathMetadata metadata) {
+        super(Reply.class, metadata);
+    }
+
+}
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>블럭요소/인라인요소</title>
+        <style>
+            div, span, input{
+                width:300px; height:300px; border:1px solid; margin:20px;
+            }
+        </style>
+    </head>
+    <body>
+        블럭요소 : line 1개를 모두 사용하는 요소들
+        <br>-> 상하마진 유지, 가로/세로 크기 지정 가능
+        <br>// div, h1~h6, p, table, ul, li, ol<br>
+        <hr>
+        인라인요소 : line 1개를 모두 사용하지 못하는 요소들
+        <br>-> 상하마진 유지X, 줄바꿈X 가로/세로 크기 지정 불가능=
+            요소 body의 크기에 따라 자동결정
+        <br>// span
+        <hr>
+        인라인블럭요소 : line 1개를 모두 사용하지 못하는 요소들
+        <br>-> but 가로/세로 크기 지정 가능
+        <br>// input, select, img,
+        <hr>
+        *상하마진 : 여백이 일정하게 유지되는가?
+        <hr>
+
+        [1/Example]<br>
+        <div>DIV1</div>
+        <div>DIV2</div>
+
+        <span>SPAN1</span>
+        <span>SPAN2</span>
+        <br><br> Result : div는 크기 지정대로 뜨는데 span은 에러도 안 뜨고 style 속성 무시<br>
+
+        <input>
+        <input>
+
+        <div style="display:inline;">DIV3</div> <!--인라인으로 강제 변경-->
+        <br>DIV3은 인라인으로 강제설정해서 style의 다른 속성값 무시함
+
+        <span style="display:block;">SPAN3</span> <!--블럭으로 강제 변경-->
+        SPAN3은 블럭으로 강제설정
+        <br>
+
+        <!--인라인 블럭으로 강제 변경한 SPAN들-->
+        <span style="display:inline-block;">SPAN4</span>
+        <span style="display:inline-block;">SPAN5</span>
+        SPAN4,5 인라인블럭으로 강제설정
+
+        <div style="text-align:right;">DIV1_right</div>
+        <div style="line-height:300px;">DIV1_height_center</div>
+
+        <hr>
+
+        [2/Example]<br>
+        <!--default : 블럭임-->
+        <ul>
+            <li><a href="#">메뉴1</a></li>
+            <li><a href="#">메뉴2</a></li>
+            <li><a href="#">메뉴3</a></li>
+        </ul><br>
+
+        <!--인라인 요소로 강제 변경-->
+        <!-- <ul>
+            <li style="display:inline;"><a href="#">메뉴1</a></li>
+            <li style="display:inline;"><a href="#">메뉴2</a></li>
+            <li style="display:inline;"><a href="#">메뉴3</a></li>
+        </ul><br> -->
+
+        <!--인라인 블럭 요소로 강제 변경-->
+        <ul>
+            <li style="display:inline-block;"><a href="#">메뉴1</a></li>
+            <li style="display:inline-block;"><a href="#">메뉴2</a></li>
+            <li style="display:inline-block;"><a href="#">메뉴3</a></li>
+        </ul><br>
+
+        <!--padding 설정-->
+        <ul style="padding-left:0px;">
+            <li style="display:inline-block;"><a href="#">메뉴1</a></li>
+            <li style="display:inline-block;"><a href="#">메뉴2</a></li>
+            <li style="display:inline-block;"><a href="#">메뉴3</a></li>
+        </ul>
+    </body>
+</html>

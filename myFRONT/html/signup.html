@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        form.signup>button[type=submit] {
+            display: none;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="../js/signup.js"></script>
+</head>
+
+<body>
+    <form class="signup" action="http://192.168.1.20:8888/backspringconfiguration/signup" method="post"  enctype="multipart/form-data">
+        <label for="i">아이디: </label> <input type="text" name="id" id="i" required>
+        <button type="button">중복확인</button>
+        <br>
+        <label for="p">비밀번호: </label><input type="password" name="pwd" id="p" required>
+        <br>
+        <label for="p1">비밀번호1: </label><input type="password" id="p1" required>
+        <br>
+        <label for="n">이름: </label><input type="text" name="name" id="n">
+        <br>
+        <label for="f1">프로필: </label><input type="file" name="f1" id="f1">
+        <div>
+            <img class="profile">
+        </div>
+        <br>
+        <label for="f2">자기소개서: </label><input type="file" name="f2" id="f2">
+
+        <button type="submit">가입하기</button>
+    </form>
+    <hr>
+    <!--
+    <form method="post" enctype="multipart/form-data" action="http://192.168.1.20:8888/back/upload">
+        <input type="file" multiple name = "f1"><br>
+        <input type="text" name = "t" value="tValue"><br>
+        <button type="submit">첨부</button>
+    </form>
+    <hr>
+    <form class="form1">
+        <input type="file" multiple name = "f1"><br>
+        <input type="text" name = "t" value="tValue"><br>
+        <button type="submit">첨부</button>
+    </form>
+    
+    <div class="download">
+        <img>
+        <button>파일다운로드</button>
+    </div>
+    -->
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        form.signup>button[type=submit] {
+            display: none;
+        }
+    </style>
+    <script>
+        window.addEventListener('load', ()=>{
+            //DOM트리에서 가입하기버튼객체찾기
+            const btSignupObj = document.querySelector('form.signup>button[type=submit]')
+
+            //DOM트리에서 id입력란 객체찾기
+            //document.getElementById('i')
+            //document.querySelector('#i')
+            const idObj = document.querySelector('form.signup>input[name=id]')
+
+            //----id입력란객체에서 focus이벤트 발생했을 때 할 일 START----
+            idObj.addEventListener('focus', ()=>{
+                btSignupObj.style.display = 'none'
+            })
+            //----id입력란객체에서 focus이벤트 발생했을 때 할 일 END----
+
+            //DOM트리에서 중복확인버튼객체찾기
+            const btDupchkObj = document.querySelector('form.signup>button[type=button]')
+
+            //----중복확인버튼객체에서 클릭이벤트 발생했을때 할 일 START----
+            btDupchkObj.addEventListener("click", (e)=>{
+                if ('admin' == idObj.value) {
+                    alert('이미 사용중인 아이디입니다')
+                } else {
+                    alert('사용가능한 아이디입니다')
+                    btSignupObj.style.display = 'inline-block'
+                }
+            })
+            //----중복확인버튼객체에서 클릭이벤트 발생했을때 할 일 END----
+
+            //DOM트리에서 폼객체 찾기
+            const formObj = document.querySelector('form.signup')
+            //----폼객체에서 submit이벤트 발생했을때 할 일 START----
+            const pwdArr = document.querySelectorAll('form.signup>input[type=password]')
+
+            //----가입하기버튼객체에서 클릭이벤트 발생했을때 할 일 START----
+            formObj.addEventListener('submit', (e)=>{
+                if (pwdArr[0].value != pwdArr[1].value) {
+                    alert('비밀번호를 다시 입력하세요')
+                    pwdArr[0].focus()
+                    pwdArr[0].select()
+                    e.preventDefault() //기본이벤트처리 안함
+                }
+            })
+            //----가입하기버튼객체에서 클릭이벤트 발생했을때 할 일 END----
+        })
+    </script>
+</head>
+
+<body>
+    <form class="signup" action="http://localhost:8888/back/signup" method="post">
+        <label for="i">아이디: </label> <input type="text" name="id" id="i" required>
+        <button type="button">중복확인</button>
+        <br>
+        <label for="p">비밀번호: </label><input type="password" name="pwd" id="p" required>
+        <br>
+        <label for="p1">비밀번호1: </label><input type="password" id="p1" required>
+        <br>
+        <label for="n">이름: </label><input type="text" name="name" id="n">
+        <br>
+        <button type="submit">가입하기</button>
+    </form>
+</body>
+
+</html>

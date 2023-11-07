@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Tue Oct 24 12:06:25 KST 2023
+org.eclipse.jst.jee.server\:backspringconfiguration=D\:\\KOSA202307\\SW\\apache-tomcat-9.0.80\\wtpwebapps\\backspringconfiguration
+org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\COM\\.m2\\repository\\org\\springframework\\spring-web\\5.3.30\\spring-web-5.3.30.jar=D\:\\KOSA202307\\SW\\apache-tomcat-9.0.80\\wtpwebapps\\backspringconfiguration\\WEB-INF\\lib\\spring-web-5.3.30.jar

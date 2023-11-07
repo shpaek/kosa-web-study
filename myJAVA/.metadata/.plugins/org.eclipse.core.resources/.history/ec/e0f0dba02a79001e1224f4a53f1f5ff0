@@ -1,0 +1,5 @@
+package com.my.jpa.dto;
+
+public class StoreDTO {
+
+}

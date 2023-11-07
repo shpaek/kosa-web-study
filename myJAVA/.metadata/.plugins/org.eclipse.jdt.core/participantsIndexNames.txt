@@ -1,0 +1,19 @@
+INDEX VERSION 1.134
+D:\KOSA202307\myJAVA\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\920371665.index
+\back\src\main\java
+D:\KOSA202307\myJAVA\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1734967668.index
+\backspringconfiguration\src\main\java
+D:\KOSA202307\myJAVA\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3096508269.index
+\backspring\src\main\java
+D:\KOSA202307\myJAVA\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1331994855.index
+\backspring\src\main\java
+D:\KOSA202307\myJAVA\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3665401517.index
+\backspringconfiguration\src\main\java
+D:\KOSA202307\myJAVA\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\472091225.index
+\backspringtest\src\main\java
+D:\KOSA202307\myJAVA\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2980302811.index
+\back2\src\main\java
+D:\KOSA202307\myJAVA\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1710695980.index
+\backspringtest\src\main\java
+D:\KOSA202307\myJAVA\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3461521390.index
+\backspring\src\main\java

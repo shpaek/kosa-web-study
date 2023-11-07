@@ -1,0 +1,8 @@
+GitRepositoriesView.GitDirectories=D\:\\KOSA202307\\.git;
+GitRepositoriesView.GitDirectories.relative=D\:\\KOSA202307\\.git;
+RepositoryGroups.uuids=
+core_autoIgnoreDerivedResources=false
+core_git_servers=
+core_preferredMergeStrategy=jgit-default-mergeStrategy
+core_ssh_default_agent=\\\\.\\pageant
+eclipse.preferences.version=1

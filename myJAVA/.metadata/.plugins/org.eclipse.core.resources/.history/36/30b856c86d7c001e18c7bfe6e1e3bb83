@@ -1,0 +1,7 @@
+package com.my.docker2.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface DockerARepository extends JpaRepository<A, ID> {
+
+}

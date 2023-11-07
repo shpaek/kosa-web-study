@@ -1,0 +1,54 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+<script>
+    // alert("in login start")    
+    $(()=>{    
+        // alert("login용 window load eventhandler")
+        const savedId = localStorage.getItem('savedId')
+        // console.log(savedId)//null
+        if(savedId != null){
+            $('input[name=id]').val(savedId)
+        }
+
+        //DOM트리에서 form객체찾기
+        //----form객체에서 submit이벤트가 발생했을 때 할 일 START----
+        $('form').submit((e)=>{
+            alert("ajax-0")
+            if($('input[type=checkbox]' ).prop('checked')){
+                 localStorage.setItem('savedId', $('input[name=id]').val() ) 
+            }else{
+                localStorage.removeItem('savedId')
+            }
+            alert("ajax-1")            
+            const idValue = $('input[name=id]').val()
+            alert("ajax-2" + idValue)
+            const pwdValue = $('input[name=pwd]').val()
+            alert("ajax-3" + pwdValue)
+            // const data = 'id=' + idValue + '&pwd=' + pwd
+            const data = `id=${idValue}&pwd=${pwdValue}`
+            alert("ajax-4" + data)
+            $.ajax({
+                url:'http://localhost:8888/back/login',
+                method : 'post',
+                success: (responseText)=>{
+                    alert(responseText)
+                },
+                error: (jqXHR, textStatus)=>{ //( jqXHR jqXHR, String textStatus, String errorThrown )
+                    // alert(textStatus) //error
+                    // console.log(jqXHR)
+                    alert(jqXHR.readyState + ":" + jqXHR.status + ":" + jqXHR.statusText)
+                }
+            })
+            alert("ajax-5")
+            e.preventDefault()
+        })
+        //----form객체에서 submit이벤트가 발생했을 때 할 일 END----
+    })
+</script>
+            
+<form>
+    <label for="i">아이디:</label><input type="text" name="id" id="i"><br>
+    <label for="p">비밀번호:</label><input type="password" name="pwd" id="p"><br>
+    <input type="checkbox" checked>아이디저장
+    <button>로그인</button> <!--<button type="submit">과 같음-->
+</form>

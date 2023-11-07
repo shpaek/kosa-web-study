@@ -1,0 +1,75 @@
+<style>
+    body {
+        position: relative;
+    }
+
+    form {
+        width: 800px;
+        padding: 25px;
+        box-sizing: border-box;
+        border-radius: 5px;
+    }
+
+    body>button {
+        text-align: right;
+    }
+</style>
+<script>
+    alert("in login start")
+    //document.addEventListener('DOMContentLoaded', ()=>{
+    window.addEventListener('load', () => { //load대신
+        alert("login용 window load eventhandler")
+        const savedId = localStorage.getItem('savedId')
+        //console.log(savedId) //null
+        if (savedId != null) {
+            document.querySelector('input[name=id]').value = savedId
+        }
+        //DOM트리에서 form객체찾기
+        //----form객체에서 submit이벤트가 발생했을 때 할 일 START----
+        document.querySelector('form').addEventListener('submit', (e) => {
+
+            console.log("ajax-0")
+            //checkbox객체의 checked속성값확인
+            if (document.querySelector('input[type=checkbox]').checked) { //.checked == true
+                localStorage.setItem('savedId', document.querySelector('input[name=id]').value)
+            } else {
+                localStorage.removeItem('savedId')
+            }
+            console.log("ajax-1")
+            const xhttp = new XMLHttpRequest()
+            xhttp.addEventListener('readystatechange', function(){
+                if(this.readyState == 4){
+                    if(this.status == 200){
+                        alert(this.responseText)
+                    }else{
+                        alert(this.status + ":" + this.responseText)
+                    }
+                }
+            })
+            console.log("ajax-2")
+            xhttp.open('post', 'http://localhost:8888/back/login')
+            console.log("ajax-3")
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+            console.log("ajax-4")
+            const idValue = document.querySelector('input[name=id]').value
+            const pwdValue = document.querySelector('input[name=pwd]').value
+            //const data = 'id=' + idValue + '&pwd' + pwdValue
+            const data = `id=${idValue}&pwd=${pwdValue}`
+            console.log(data)
+            xhttp.send(data)
+            //xhttp.send('id=aaa&pwd=bbb')
+            e.preventDefault()
+        })
+        //----form객체에서 submit이벤트가 발생했을 때 할 일 END----
+
+    })
+</script>
+
+<form>
+    <label for="i">아이디: </label><input type="text" name="id" id="i">
+    <br>
+    <label for="p">비밀번호: </label><input type="password" name="pwd" id="p">
+    <br>
+    <input type="checkbox" checked>아이디저장
+    <button type="submit">로그인</button>
+</form>

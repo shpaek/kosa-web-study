@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        form.signup>button[type=submit] {
+            display: none;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script>
+        // window.addEventListener('load', ()=> {
+        $(()=>{
+            //DOM트리에서 가입하기버튼객체찾기
+            // const btSignupObj = document.querySelector('form.signup>button[type=submit]')
+            const $btSignupObj = $('form.signup>button[type=submit]')
+            //DOM트리에서 id입력란객체찾기
+            // document.getElementById('i')
+            // document.querySelector('#i')
+            // const idObj = document.querySelector('form.signup>input[name=id]')
+            const $idObj = $('form.signup>input[name=id]')
+            //----id입력란객체에서 focus이벤트 발생했을 때 할 일 START----
+            // idObj.addEventListener('focus', ()=>{
+            //     btSignupObj.style.display = 'none'
+            // })
+            $idObj.focus(()=>{
+                $btSignupObj.hide()
+            })
+            //----id입력란객체에서 focus이벤트 발생했을 때 할 일 END----
+
+
+            //DOM트리에서 중복확인버튼객체찾기
+            // const btDupchkObj = document.querySelector('form.signup>button[type=button]')
+            const $btDupchkObj = $('form.signup>button[type=button]')
+
+            //----중복확인버튼객체에서 클릭이벤트 발생했을때 할 일 START----
+            // btDupchkObj.addEventListener('click', ()=>{
+            $btDupchkObj.click( ()=>{    
+                // if('admin' == idObj.value){
+                if('admin' == $idObj.val()){                    
+                    alert('이미 사용중인 아이디입니다')
+                }else{
+                    alert('사용가능한 아이디입니다')
+                    // btSignupObj.style.display = 'inline-block'
+                    $btSignupObj.show()
+                }
+            })
+            //----중복확인버튼객체에서 클릭이벤트 발생했을때 할 일 END----
+
+
+            //DOM트리에서 폼객체 찾기
+            // const formObj = document.querySelector('form.signup')
+            const $formObj = $('form.signup')
+
+            //----폼객체에서 submit이벤트 발생했을때 할 일 START----
+            // formObj.addEventListener('submit', (e)=>{
+            $formObj.submit((e)=>{                
+                const $pwdArr = $('form.signup>input[type=password]')
+                if($pwdArr.eq(0).val() != $pwdArr.eq(1).val()){                    
+                    alert('비밀번호를 다시 입력하세요')
+                    $pwdArr.eq(0).focus()
+                    $pwdArr.eq(0).select()
+                    e.preventDefault()
+                }
+            })
+            //----폼객체에서 submit이벤트 발생했을때 할 일 END----
+
+
+
+
+
+
+
+        })
+    </script>
+</head>
+
+<body>
+    <form class="signup" action="http://localhost:8888/back/signup" method="post">
+        <label for="i">아이디 : </label> <input type="text" name="id" id="i" required>
+        <button type="button">중복확인</button>
+        <br>
+
+        <label for="p">비밀번호 :</label> <input type="password" name="pwd" id="p" required>
+        <br>
+        <label for="p1">비밀번호1 :</label> <input type="password" id="p1" required>
+        <br>
+
+        <label for="n">이름 :</label> <input type="text" name="name" id="n" required>
+        <br>
+
+        <button type="submit">가입하기</button>
+    </form>
+</body>
+
+</html>

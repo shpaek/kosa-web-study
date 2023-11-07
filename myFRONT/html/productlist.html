@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        div.product {
+            width: 200px;
+            display: inline-block
+        }
+
+        div.product>ul {
+            list-style-type: none;
+            padding-left: 0px;
+        }
+
+        div.product>ul>li>img {
+            /*width:100px;*/
+            width: 80%;
+        }
+
+        div.product>ul>li>span {
+            display: inline-block;
+            width: 80%;
+            text-align: center;
+        }
+
+        .productlist>h3 {
+            width: 200px;
+            margin: 10px auto;
+            text-align: right;
+            background: yellow;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="../js/productlist.js"></script>
+</head>
+
+<body>
+    <div class="productlist">
+        <h3>상품목록</h3>
+        <div class="product">
+            <ul>
+                <li><img src="" alt="원본"></li>
+                <li><span>상품이름</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="pagegroup">
+
+    </div>
+</body>
+
+</html>

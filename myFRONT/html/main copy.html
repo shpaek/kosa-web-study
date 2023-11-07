@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Kosabucks Korea</title>
+    <style>
+        /*
+        width, height, padding, border, margin
+        position, top/left, float, clear, overflow, z-index
+        background, color, font, text
+        */
+        * {
+            box-sizing: border-box;
+        }
+
+        header {
+            width: 10%;
+            height: 80px;
+            line-height: 80px;
+            float: left;
+            background-color: transparent;
+        }
+
+        header>img {
+            margin-left: 400px;
+            float: left;
+        }
+
+        nav {
+            width: 70%;
+            height: 80px;
+            margin-left: 100px;
+            background-color: rgb(243, 242, 235);
+            float: right;
+            text-align: center;
+        }
+
+        nav>ul {
+            padding: 0;
+            margin: 0;
+            width: auto;
+
+        }
+
+        nav>ul>li {
+            display: inline-block;
+            list-style: none;
+            margin: 30px 50px;
+        }
+
+        nav>ul>li>a {
+            text-decoration: none;
+            color: black;
+        }
+
+        nav>ul>li>a:hover {
+            background-color: #21473e;
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        section {
+            width: 100%;
+            height: 700px;
+            padding-top: 80px;
+        }
+
+        footer {
+            text-align: center;
+            background-color: rgb(52, 54, 52);
+            height: 200px;
+            width: 100%;
+            color: #fff
+        }
+    </style>
+    <script>
+        function ajaxHandler(method, url, target) {
+            console.log(url)
+            const xhttp = new XMLHttpRequest()
+            xhttp.addEventListener('readystatechange', function () {
+                if (this.readyState == 4) {
+                    if (this.status == 200) {
+                        target.innerHTML = this.responseText
+                    } else if (this.status == 404) {
+                        alert('자원이 없습니다')
+                    } else if (this.status == 500) {
+                        alert('서버실행시 오류가 발생했습니다')
+                    } else {
+                        alert(this.responseText)
+                    }
+                }
+            })
+            xhttp.open(method, url)
+            xhttp.send()
+        }
+        window.addEventListener('load', () => {
+            //DOM트리에서 section객체찾기
+            const sectionObj = document.querySelector('section')
+
+            //DOM트리에서 nav>ul>li>a객체들 찾기
+            const menus = document.querySelectorAll('nav>ul>li>a')
+            menus.forEach((menu, i) => {
+                //----메뉴객체에서 클릭이벤트가 발생했을 때 할 일 START----
+                menu.addEventListener('click', (e) => {
+                    //menu
+                    switch (e.target.className) {
+                        case 'login':
+                            ajaxHandler('GET', './login.html', sectionObj)
+                            break
+                        case 'signup':
+                            ajaxHandler('GET', './signup.html', sectionObj)
+                            break
+                        case 'logout':
+                            break
+                        case 'productlist':
+                            ajaxHandler('GET', './productlist.html', sectionObj)
+                            break
+                        case 'cartlist':
+                            break
+                        case 'orderlist':
+                            break
+                    }
+                    e.preventDefault()
+                })
+                //----메뉴객체에서 클릭이벤트가 발생했을 때 할 일 END----
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <header> <!--<div class="head"-->
+        <img src="../images/logo.png" alt="로고">
+    </header>
+    <nav>
+        <!--메뉴들-->
+        <ul>
+            <li><a href="#" class="login">로그인</a></li>
+            <li><a href="#" class="signup">가입</a></li>
+            <li><a href="#" class="logout">로그아웃</a></li>
+            <li><a href="#" class="productlist">상품목록</a></li>
+            <li><a href="#" class="cartlist">장바구니목록</a></li>
+            <li><a href="#" class="orderlist">주문목록</a></li>
+        </ul>
+    </nav>
+    <section> <!--카테고리가 달라지면, 섹션도 여러개 생성-->
+
+    </section>
+    <footer>
+        사업자등록번호 : 201-81-21515 주식회사 에스씨케이컴퍼니 대표이사 : 손정현 TEL : 1522-3232 개인정보 책임자 : 이찬우
+        <br>
+        ⓒ 2023 Starbucks Coffee Company. All Rights Reserved.
+    </footer>
+</body>
+
+</html>

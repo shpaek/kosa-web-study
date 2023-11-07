@@ -1,0 +1,7 @@
+com\my\docker2\config\MyApplicationContext.class
+com\my\docker2\config\MyMVCContext.class
+com\my\docker2\control\TestController.class
+com\my\docker2\dao\DockerARepository.class
+com\my\docker2\SpringbootDocker2Application.class
+com\my\docker2\entity\DockerA$DockerABuilder.class
+com\my\docker2\entity\DockerA.class

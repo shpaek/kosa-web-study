@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        window.addEventListener('load', function () {
+            //DOM트리에서 div객체찾기
+            const divObj = document.querySelector("div")
+            //DOM트리에서 a객체찾기
+            const aObj = document.querySelector("div>a")
+
+            //----div객체에서 click이벤트가 발생했을 때 할 일 START----
+            divObj.addEventListener("click", function (e) {
+                //divObj.style.backgroundColor = 'gray'
+                this.style.backgroundColor = 'gray'
+                //console.log(e.target)
+                //e.target.style.backgroundColor = 'gray'
+            })
+            //----div객체에서 click이벤트가 발생했을 때 할 일 END----
+
+            //----a객체에서 click이벤트가 발생했을 때 할 일 START----
+            /*
+            aObj.addEventListener('click', function(e){
+                //aObj.style.backgroundColor = 'yellow'
+                //this.style.backgroundColor = 'yellow'
+                
+                e.target.style.backgroundColor = 'yellow'
+                e.preventDefault()
+                //e.stopPropagation()
+            })
+            */
+            aObj.addEventListener('click', (e) => {
+                //aObj.style.backgroundColor = 'yellow' //O
+                //console.log(this) //window객체
+                //this.style.backgroundColor = 'yellow'
+                //e.target.style.backgroundColor = 'yellow' //O
+                e.preventDefault()
+            })
+            //----a객체에서 click이벤트가 발생했을 때 할 일 END----
+
+        })
+    </script>
+</head>
+
+<body>
+    <div style="width:300px; height:300px; padding:20px;">
+        <a href="http://google.com">구글</a>
+    </div>
+</body>
+
+</html>

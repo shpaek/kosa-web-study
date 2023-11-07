@@ -1,0 +1,23 @@
+package com.my.jpa.entity;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+
+//사용할 테이블명 : info_tbl
+public class Info {
+	//pk역할용 컬럼명: info_no
+	@Id
+	@Column(name = "info_no")
+	private Long infoNo;	//주문기본번호 : 일련번호용 객체- info_seq시퀀스객체
+	
+	//컬럼명 : info_id
+	@Column(name = "info_id")
+	private String infoId;
+	
+	//컬럼명 : info_dt
+	@Column(name = "info_dt")
+	private Date infoDt;
+	
+}
