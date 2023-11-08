@@ -1,0 +1,70 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <button class="btn">오문정</button>
+        <button class="timer">타이머</button>
+        <script>
+            const btn = document.querySelector('.btn')
+            btn.addEventListener('click', 
+            ()=>{
+                let children = btn.childNodes                
+                console.log(children[0])
+                console.log(btn.firstChild)
+            })     
+            
+            const timer = document.querySelector('.timer')
+            // timer.addEventListener('click', ()=>{
+            //     let dt = new Date()
+            //     console.log('0:' + dt.getHours()+'시 '+dt.getMinutes() +'분 ' + dt.getSeconds() +'초')
+
+            //     setTimeout(()=>{
+            //         let dt1 = new Date()
+            //         console.log('1:' + dt1.getHours()+'시 '+dt1.getMinutes() +'분 ' + dt1.getSeconds() +'초')
+            //     }, 3000)
+
+            //     setTimeout(()=>{
+            //         let dt2 = new Date()
+            //         console.log('2:' + dt2.getHours()+'시 '+dt2.getMinutes() +'분 ' + dt2.getSeconds() +'초')
+            //     }, 2000)
+
+            //     setTimeout(()=>{
+            //         let dt3 = new Date()
+            //         console.log('3:' + dt3.getHours()+'시 '+dt3.getMinutes() +'분 ' + dt3.getSeconds() +'초')
+            //     }, 1000)
+
+            //     setTimeout(()=>{
+            //         let dt1 = new Date()
+            //         console.log('1:' + dt1.getHours()+'시 '+dt1.getMinutes() +'분 ' + dt1.getSeconds() +'초')
+            //         setTimeout(()=>{
+            //             let dt2 = new Date()
+            //             console.log('2:' + dt2.getHours()+'시 '+dt2.getMinutes() +'분 ' + dt2.getSeconds() +'초')
+            //             setTimeout(()=>{
+            //                 let dt3 = new Date()
+            //                 console.log('3:' + dt3.getHours()+'시 '+dt3.getMinutes() +'분 ' + dt3.getSeconds() +'초')
+                    
+            //             }, 1000)
+            //         }, 2000)
+            //     },3000)
+            // })
+
+
+            let showTimer = function(no){
+                let dt = new Date()
+                console.log(no+':' + dt.getHours()+'시 '+dt.getMinutes() +'분 ' + dt.getSeconds() +'초')
+            } 
+            timer.addEventListener('click', ()=>{
+                showTimer(0)
+                setTimeout(()=>{
+                    showTimer(1)
+                    setTimeout(()=>{
+                        showTimer(2)
+                        setTimeout(()=>{
+                            showTimer(3)
+                        }, 1000)
+                    },2000)
+                }, 3000)
+            })
+        </script>
+    </body>
+</html>
