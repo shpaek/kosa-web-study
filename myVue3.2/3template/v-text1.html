@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <div id="app">
+        {{message}}
+
+        <hr>
+        <h2>{{message}}</h2>
+        <h1 v-text="message"></h1> <!-- h1Obj.innerText = model.message -->
+        <h1 v-html="message2"></h1> <!-- h1Obj.innerHtml = model.message2 -->
+    </div>
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        const model = {message: "WELCOME", message2: '<a href="#">test</a>'}
+        let vm = Vue.createApp({
+            name: "App",
+            data() {
+                return model
+            }
+        }).mount('#app')
+    </script>
+</body>
+
+</html>

@@ -13,10 +13,26 @@ import com.my.product.dto.Product;
 import com.my.util.PageGroup;
 
 public class ProductListJsonController extends ProductController {
+	static private ProductListJsonController controller = new ProductListJsonController();
+	public ProductListJsonController() {}
+	public static ProductListJsonController getInstance() {
+		return controller;
+	}
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		// 헤더 설정
+		response.setHeader("Access-Control-Allow-Origin", "http://192.168.1.20:5500");
+		response.setHeader("Access-Control-Allow-Credentials", "true");
+
+		try {
+			Thread.sleep(10*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		//응답형식
 		response.setContentType("application/json;charset=utf-8");

@@ -6,7 +6,7 @@
             <h2>{{message}}</h2>
             <div>{{message}}</div>
             <hr>
-            <h3>{{name}}</h3>
+            <!-- <h3>{{name}}</h3> -->
         </div>
         <script src="http://unpkg.com/vue"></script>
         <script>
@@ -14,11 +14,11 @@
             let vm = Vue.createApp({
                 name: "App",
                 data() {
-                    //return model
-                    return{
-                        message : 'WELCOME',
-                        name : 'SeohyeonPaek'
-                    }
+                    return model
+                    // return{
+                    //     message : 'WELCOME',
+                    //     name : 'SeohyeonPaek'
+                    // }
                 }
             }).mount('#app')
         </script>

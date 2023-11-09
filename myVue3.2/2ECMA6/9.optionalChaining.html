@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <script>
+        let users = [
+            {
+                name: 'Sam',
+                address: 'NY',
+                contact: {
+                    phone: 114,
+                    email: "a@b.com"
+                }
+            },
+            {
+                name: "Dave"
+            },
+            {
+                name: 'Jacob',
+                address: 'LA',
+                contact: {
+                    phone: 112
+                }
+            },
+        ]
+
+        users.forEach((user) => {
+            console.log(user.address) //NY undefined LA
+        })
+
+        users.forEach((user) => {
+           console.log(user.contact.email) //a@b.com TypeError: Cannot read properties of undefined (reading 'email')
+        })
+        
+        users.forEach((user) => {
+            console.log(user.contact ?.email) //a@b.com undefined undefined
+        })
+    </script>
+</head>
+
+</html>

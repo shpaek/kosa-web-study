@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>methodsProperty1.html</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model.number="num">
+        <hr>
+        숫자:{{num}}<br>
+        1~{{num}}합:
+        <br>{{calc()}}
+        <br>{{calc()}}
+        <br>{{calc()}}
+    </div>
+    <script src="http://unpkg.com/vue"></script>
+    <script>
+        let vm = Vue.createApp({
+            name: "App",
+            data() {
+                return {
+                    sum: 0,
+                    num: 0
+                }
+            },
+            methods: {
+                calc(){
+                    console.log("calc()메서드가 호출됨")
+                    //return this.num+10
+                    let n = parseInt(this.num)
+                    if(Number.isNaN(n)) return 0
+                    return (n * (n+1)) / 2
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="app">
+            {{name}}
+            <hr>
+            <input type="text" v-bind:value="name">
+            <hr>
+            <input type="text" v-model="name">
+        </div>
+
+        <script src="http://unpkg.com/vue"></script>
+        <script>
+            Vue.createApp({
+                name: "App",
+                data() {
+                    return{
+                        name: "💕서현"
+                    }
+                }
+            }).mount("#app")
+        </script>
+    </body>
+</html>

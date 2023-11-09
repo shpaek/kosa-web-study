@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>   
+    <script type="module">
+        /*
+        독립성을 가진 재사용 가능한 코드 블록입니다.
+        여러 개의 코드 블록을 각각의 파일로 분리한 후 필요한 모듈들을 조합할 수 있습니다.
+        ES6에서는 모듈들을 JS코드를 포함하고 있는 파일이라고 간주해도 무방합니다.
+        코드 블록안에서 import, export구문을 이용해서 모듈을 가져오거나 내보낼 수 있습니다.
+        모듈 내부에서 선언된 모든 변수, 함수, 객체, 클래스는 지역적인(local) 것으로 간주됩니다.
+        따라서 재사용 가능한 모듈을 만들려면 반드시 외부로 공개하고자 하는 것을 export해야 합니다.
+        export할 수 있는 대상은 변수, 함수, 객체, 클래스 등입니다.
+        export된 모듈은 다른 모듈에서 import구문으로 참조하여 사용할 수 있습니다.
+        */
+        //import { add } from './export.js'
+        // import { test } from './export.js'
+        import { add, test } from './export.js'
+        console.log(add(4)) //104
+        test()
+    </script>
+</head>
+</html>
