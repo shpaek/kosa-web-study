@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>06-12</title>
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.2.3/dist/css/bootstrap.min.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+
+    .title {
+      text-align: center;
+      font-weight: bold;
+      font-size: 20pt;
+    }
+
+    .todo-done {
+      text-decoration: line-through;
+    }
+
+    .container {
+      padding: 10px 10px 10px 10px;
+    }
+
+    .card-borderless {
+      border: 0;
+      box-shadow: none;
+    }
+
+    .pointer {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" class="container">
+    <div class="card card-body bg-light">
+      <div class="title">:: Todolist App</div>
+    </div>
+    <div class="card card-default card-borderless">
+      <div class="card-body">
+        <div class="row mb-3">
+          <div class="col">
+            <div class="input-group">
+              <input id="msg" type="text" class="form-control"
+                    name="msg" placeholder="할일을 여기에 입력!"
+                    v-model="todo" v-on:keyup.enter="add"/>
+              <span class="btn btn-primary input-group-addon"
+                    v-on:click="add">추가</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <ul class="list-group">
+              <li
+                class="list-group-item"
+                v-for="(tl, index) in todolist"
+                :key="tl.id"
+                :class="{ 'list-group-item-success': tl.completed }"
+              >
+              <!--이벤트 전파 : e.stopPropagation()   v-on:click.stop
+                  기본이벤트처리 중지 : e.preventDefault()    v-on:click.prevent
+                -->
+                <span :class="{ 'todo-done': tl.completed, 'pointer': true }" v-on:click="upd(index)">
+                  {{ tl.todo }}{{ tl.completed ? ' (완료)' : '' }}</span>
+                <span class="float-end badge bg-secondary pointer" v-on:click="del(index)">삭제</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/vue"></script>
+  <script type="text/javascript">
+    //할일(Todo) 데이터: id, 내용, 완료여부(true, false)
+    // let todolist =
+    //   [
+    //     { id: 1, todo: '내용1', completed: false },
+    //     { id: 2, todo: '내용2', completed: false },
+    //     { id: 3, todo: '내용3', completed: false }
+    //   ]
+
+    Vue.createApp({
+      data() {
+        return {
+          todo: "", //텍스트박스에 사용자가 입력한 내용과 바인드될 프로퍼티
+          todolist: //목록과 바인드될 프로퍼티
+                    [{id: 1, todo: '내용1', completed: false},
+                     {id: 2, todo: '내용2', completed: false},
+                     {id: 3, todo: '내용3', completed: false}]
+        }
+      }
+        /*
+        메서드
+        추가 : 추가버튼클릭하면 todolist에 텍스트박스에 사용자가 입력한 내용을 추가(push...)
+        삭제 : 삭제버튼클릭하면 todolist에서 id를 이용해서 todo아이템을 찾아 삭제(splice...)
+        변경 : 할일 한 건을 클릭하면 id를 이용해서 completed값을 토글(false->true->false...)
+        */
+      , methods:{
+        add(){
+          this.todolist.push({id: this.todolist.length+1, todo: this.todo, completed: false})
+          this.todo = ""; // 입력 후 텍스트박스 초기화
+          console.log('in add() this.todolist')
+          console.log(this.todolist)
+        },
+        upd(index){
+          this.todolist[index].completed = !this.todolist[index].completed;
+        },
+        del(index){
+          this.todolist.splice(index, 1);
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+
+</html>
