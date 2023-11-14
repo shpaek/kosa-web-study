@@ -24,7 +24,8 @@ public class ProductListJsonController extends ProductController {
 			throws ServletException, IOException {
 
 		// 헤더 설정
-		response.setHeader("Access-Control-Allow-Origin", "http://192.168.1.20:5500");
+//		response.setHeader("Access-Control-Allow-Origin", "http://192.168.1.20:5500");
+		response.setHeader("Access-Control-Allow-Origin", "http://192.168.1.20:5173");
 		response.setHeader("Access-Control-Allow-Credentials", "true");
 
 		try {
