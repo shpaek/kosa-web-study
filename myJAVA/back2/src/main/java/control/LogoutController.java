@@ -13,6 +13,9 @@ public class LogoutController extends CustomerController {
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		response.setHeader("Access-Control-Allow-Origin", "http://192.168.1.20:5173");
+		response.setHeader("Access-Control-Allow-Credentials", "true");
+		
 		HttpSession session = request.getSession();
 //		System.out.println("in logout:" + session.getId());
 		session.removeAttribute("loginedId");

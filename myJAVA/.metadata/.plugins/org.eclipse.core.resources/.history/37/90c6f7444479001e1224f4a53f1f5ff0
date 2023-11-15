@@ -1,7 +1,0 @@
-package com.my.board.dao;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public interface ReplyRepository extends JpaRepository<T, ID> {
-
-}
