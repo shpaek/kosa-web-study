@@ -28,12 +28,12 @@ public class ProductListJsonController extends ProductController {
 		response.setHeader("Access-Control-Allow-Origin", "http://192.168.1.20:5173");
 		response.setHeader("Access-Control-Allow-Credentials", "true");
 
-		try {
-			Thread.sleep(10*1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			Thread.sleep(10*1000);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 		//응답형식
 		response.setContentType("application/json;charset=utf-8");

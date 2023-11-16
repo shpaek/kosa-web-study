@@ -1,5 +1,6 @@
 <template lang="">
 <section>
+    
         <!-- SECTION START -->
         <router-view></router-view>
         <!-- SECTION END<hr/> -->
@@ -13,7 +14,7 @@ export default {
 <style scoped>
 section {
     width: 100%;
-    height: 1000px;
+    height: 1046px;
     display: flex;
     justify-content: center;
     align-items: center;
