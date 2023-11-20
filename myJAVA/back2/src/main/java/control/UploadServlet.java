@@ -21,8 +21,10 @@ public class UploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		response.setHeader("Access-Control-Allow-Origin", 
+//				"http://192.168.1.20:5500");
 		response.setHeader("Access-Control-Allow-Origin", 
-				"http://192.168.1.20:5500");
+				"http://192.168.1.20:5173");
 		response.setHeader("Access-Control-Allow-Credentials", "true");
 		//		//post방식의 요청인 경우 요청바디의 형식은 application/x-www-form-urlencoded입니다
 		//		String tValue = request.getParameter("t");

@@ -16,7 +16,9 @@
             </li>
             <template v-if="loginedId != ''">
                 <li><a href="#" class="intro">자기소개서</a></li>
-                <li><img class="profile" v-bind:src="profile"></li>
+                <li>
+                    <img v-show="profile" v-bind:src="profile" class="profile">
+                </li>
             <li>
                 <a href="#" @click="logoutClickHandler()">{{loginedId}}님 로그아웃</a>
             </li>
@@ -46,6 +48,7 @@ export default {
     data() {
         return {
             loginedId: '',
+            profile: '../images/profile.png'
         }
     },
     created() {
@@ -53,6 +56,23 @@ export default {
         if (loginedId != null) {
             this.loginedId = loginedId
         }
+        //----프로필이미지파일 다운로드 START----
+        const url = `${this.backURL}/download?id=${this.loginedId}&opt=profile`
+        axios.get(url,
+            {
+                responseType: 'blob'
+            }
+        ).then(response => {
+            // console.log(response)
+            if (response.data.size > 0) { //다운로드 파일이 있는 경우                   
+                const blob = new Blob([response.data]);
+                const url = URL.createObjectURL(blob)
+                this.profile = url
+            } else { //다운로드파일이 없는 경우
+                this.profile = '../images/profile.png'
+            }
+        })
+        //----프로필이미지 다운로드 END----
     },
     methods: {
         // ----로고img객체에서 클릭이벤트가 발생했을 때 할 일 START----

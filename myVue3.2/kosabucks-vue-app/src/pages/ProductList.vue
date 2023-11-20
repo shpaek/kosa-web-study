@@ -1,78 +1,92 @@
-<template>
+<template lang="">
     <div class="productlist">
-      <h3>상품목록</h3>
-      <div class="product" v-for="(product, index) in list" :key="index" @click="productHandler(product)">
-        <!-- :to 속성을 이용하여 동적 링크 생성 -->
-        <router-link :to="'/productlist/' + $route.params.currentPage">
-        <ul>
-          <li><img :src="'../images/' + product.prodNo + '.jpg'"></li>
-          <li><span>{{ product.prodName }}</span></li>
-        </ul>
-      </router-link>
-      </div>
-  
-      <div class="pagegroup">
-        <span v-if="pagegroup.startPage > 1" @click="pageClickHandler(pagegroup.startPage - 1)" class="pagination-btn">[PREV]</span>
-        <span v-for="i in pagegroup.endPage" :key="i" @click="pageClickHandler(i)" :class="{ active: i === pagegroup.currentPage }" class="pagination-number">{{ i }}</span>
-        <span v-if="pagegroup.endPage < pagegroup.totalPage" @click="pageClickHandler(pagegroup.endPage + 1)" class="pagination-btn">[NEXT]</span>
-      </div>
+        <h3>상품목록</h3>
+        <ProductItem :p="p"  
+            v-if="pageGroup" 
+            v-for="p in pageGroup.list" 
+            :key="p.prodNo"/>
+        <PageGroup
+            v-if="pageGroup" :pg="pageGroup" 
+            :path="/productlist/"
+            :currentPage="$route.params.currentPage?$route.params.currentPage: 1"
+            :start="pageGroup.startPage" 
+            :end="pageGroup.endPage"
+            :total="pageGroup.totalPage"
+        />
     </div>
-  </template>
-  
-  <script>
-  import axios from 'axios';
-  
-  export default {
+</template>
+<script>
+import ProductItem from './ProductItem.vue'
+import PageGroup from './PageGroup.vue'
+import axios from 'axios'
+export default {
     name: 'ProductList',
+    components: { ProductItem, PageGroup },
     data() {
-      return {
-        list: [],
-        pagegroup: {
-          startPage: 1,
-          endPage: 1,
-          currentPage: 1,
-          totalPage: 1
-        },
-        
-      };
+        return {
+            currentPage: 1,
+            pageGroup: null,
+        }
     },
-
     methods: {
-      productListHandler(cp) {
-        const url = `${this.backURL}/productlistjson?currentPage=${cp}`;
-  
-        axios.get(url)
-          .then((response) => {
-            this.list = response.data.list;
-            this.pagegroup = {
-              startPage: response.data.startPage,
-              endPage: response.data.endPage,
-              currentPage: response.data.currentPage,
-              totalPage: response.data.totalPage
-            };
-          })
-          .catch((error) => {
-            console.log(error);
-            alert(error.message);
-          });
-      },
-  
-      productHandler(product) {
-        const prodNo = product.prodNo;
-        location.href = `${this.backURL}/product.html?prodno=${prodNo}`;
-      },
-  
-      pageClickHandler(page) {
-        this.productListHandler(page);
-      }
+        //----페이지그룹의 페이지(ex: [1] [2] [NEXT])객체가 클릭되었을 때 할 일 START----   
+        axiosHandler() {
+            const url = `${this.backURL}/productlistjson?currentPage=${this.currentPage}`
+            axios.get(url)
+            .then(response=>{
+                this.pageGroup = response.data
+                /*
+                {
+    "list": [
+        {
+            "prodNo": "D0001",
+            "prodName": "요거트",
+            "prodPrice": 3000
+        },
+        {
+            "prodNo": "D0002",
+            "prodName": "블랙티",
+            "prodPrice": 3000
+        },
+        {
+            "prodNo": "D0003",
+            "prodName": "딸기주스",
+            "prodPrice": 1000
+        }
+    ],
+    "totalCnt": 11,
+    "currentPage": 2,
+    "totalPage": 4,
+    "startPage": 1,
+    "endPage": 2
+}*/
+            })
+        }
+        //----페이지그룹의 페이지(ex: [1] [2] [NEXT])객체가 클릭되었을 때 할 일 END----
+    },
+    watch: {
+        //----라우터값이 변경되었을 때 할 일 START----
+        $route(newRoute, oldRoute) {
+            console.log("라우터값이 변경" + newRoute.path + "," + oldRoute.path)
+            if (newRoute.params.currentPage) {
+                this.currentPage = newRoute.params.currentPage
+            } else {
+                this.currentPage = 1
+            }
+            this.axiosHandler(this.currentPage)
+        }
+        //----라우터값이 변경되었을 때 할 일 END----     
     },
     created() {
-      this.productListHandler(1);
+        console.log('created productlist')
+        if (this.$route.params.currentPage) {
+            this.currentPage = this.$route.params.currentPage
+        }
+        this.axiosHandler(this.currentPage)
     }
-  };
-  </script>
-  
-  <style scoped>
+}
+</script>
+<style scoped>
   .productlist {
     text-align: center;
     background-color: #f0f0f0;
@@ -150,5 +164,4 @@
     font-weight: bold;
     color: #333;
   }
-  </style>
-  
+</style>

@@ -6,13 +6,14 @@ import Signup from '@/pages/Signup.vue'
 import ProductList from '@/pages/ProductList.vue'
 
 const router = createRouter({
+  mode: 'history',
   history: createWebHistory(), //라우팅모드설정
   routes: [
     { path: "/", component: Home },
     { path: "/login", component: Login },
     { path: "/signup", component: Signup },
-    { path: "/productlist", component: ProductList },
-    { path: "/productlist/:currentPage", component: ProductList },
+    { path: '/productlist/', component: ProductList },    
+    { path: '/productlist/:currentPage', component: ProductList },
 
   ]
 })

@@ -15,7 +15,8 @@ public class DownloadController implements Controller {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		response.setHeader("Access-Control-Allow-Origin", "http://192.168.1.20:5173");
+		response.setHeader("Access-Control-Allow-Credentials", "true");
 		//text/html, application/json
 		response.setContentType("application/octet-stream;charset=UTF-8");
 //		PrintWriter out = response.getWriter();
